@@ -3,6 +3,17 @@
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
+;; Disable menu-bar
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+;;
+(global-set-key "\C-x\C-m" 'execute-extended-command)
+(global-set-key "\C-c\C-m" 'execute-extended-command)
+
+(global-set-key "\C-w" 'forward-word)
+(global-set-key "\C-Q" 'backward-word)
+
+
 (ido-mode t)
 (cua-mode t)
 (global-linum-mode t)
