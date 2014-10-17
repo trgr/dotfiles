@@ -83,6 +83,15 @@
  )
 
 ;; BEGIN MY SAVED MACROS
+(fset 'require-same
+   [?\C-\[ ?b ?\C-@ ?\C-e ?\C-c timeout ?  ?= ?  ?r ?e ?q ?u ?i ?r ?e ?\( ?  ?\' ?\C-v ?\' ?  ?\)])
+
 (fset 'create-express-handler
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote (" : function( req , res ){}OA	if	if( req.is( '' )ODODODjson )	return res.json()OD 	return res.render( )OBOAOAOAOAOA	" 0 "%d")) arg)))
 
+(fset 'create-handler-from-route
+   [?\C-\[ ?b ?\C-@ ?\C-\[ ?f ?\C-c timeout ?\C-x ?\C-\[ ?O ?C ?\C-v ?\C-\[ ?x ?c ?r ?e ?\C-i ?\C-m ?\C-\[ ?> ?\C-m ?\C-x ?\C-\[ ?O ?D ?\C-e ?\C-\[ ?O ?B])
+
+
+;;Macro shortcuts
+(global-set-key (kbd "<f2>") 'require-same)
