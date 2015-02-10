@@ -3,6 +3,8 @@
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
+
+
 ;; Disable menu-bar
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -17,6 +19,14 @@
 (ido-mode t)
 (cua-mode t)
 (global-linum-mode t)
+
+(setq tab-width 2) 
+(setq js-indent-level 2)
+(setq javascript-indent-level 2)
+(setq default-tab-width 2)
+
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
 
 ;;ORG MODE
 (require 'org)
@@ -37,7 +47,7 @@
 (autoload 'php-mode "php-mode.el" "Php mode." t)
 (setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
 (autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
+	"Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.ejs$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.gyp$" . javascript-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
@@ -84,14 +94,25 @@
 
 ;; BEGIN MY SAVED MACROS
 (fset 'require-same
-   [?\C-\[ ?b ?\C-@ ?\C-e ?\C-c timeout ?  ?= ?  ?r ?e ?q ?u ?i ?r ?e ?\( ?  ?\' ?\C-v ?\' ?  ?\)])
+			[?\C-\[ ?b ?\C-@ ?\C-e ?\C-c timeout ?  ?= ?  ?r ?e ?q ?u ?i ?r ?e ?\( ?  ?\' ?\C-v ?\' ?  ?\)])
 
 (fset 'create-express-handler
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote (" : function( req , res ){}OA	if	if( req.is( '' )ODODODjson )	return res.json()OD 	return res.render( )OBOAOAOAOAOA	" 0 "%d")) arg)))
+			(lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote (" : function( req , res ){}OA	if	if( req.is( '' )ODODODjson )	return res.json()OD 	return res.render( )OBOAOAOAOAOA	" 0 "%d")) arg)))
 
 (fset 'create-handler-from-route
-   [?\C-\[ ?b ?\C-@ ?\C-\[ ?f ?\C-c timeout ?\C-x ?\C-\[ ?O ?C ?\C-v ?\C-\[ ?x ?c ?r ?e ?\C-i ?\C-m ?\C-\[ ?> ?\C-m ?\C-x ?\C-\[ ?O ?D ?\C-e ?\C-\[ ?O ?B])
+			[?\C-\[ ?b ?\C-@ ?\C-\[ ?f ?\C-c timeout ?\C-x ?\C-\[ ?O ?C ?\C-v ?\C-\[ ?x ?c ?r ?e ?\C-i ?\C-m ?\C-\[ ?> ?\C-m ?\C-x ?\C-\[ ?O ?D ?\C-e ?\C-\[ ?O ?B])
+
+;;Indent buffer
+(fset 'indent-buffer
+			"\C-[xmark\C-i-who\C-i\C-m\C-[xinden\C-i-reg\C-i\C-m\C-xsy")
+
+(fset 'snake-to-camel
+   "\C-s_\C-[OD\C-[[3~\C-[xcapi\C-i\C-m-word\C-m")
 
 
 ;;Macro shortcuts
 (global-set-key (kbd "<f2>") 'require-same)
+(global-set-key (kbd "<f8>") 'indent-buffer)
+
+
+
